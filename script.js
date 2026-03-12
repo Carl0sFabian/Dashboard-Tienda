@@ -157,18 +157,18 @@ function renderOrders() {
 
     tbody.innerHTML = filtered.map(o => `
         <tr>
-          <td>${formatDate(o.date)}</td>
-          <td><strong>${o.childName}</strong></td>
-          <td>${o.phone}</td>
-          <td><span class="inline-pill pill-v">${o.carnets}</span></td>
-          <td><span class="inline-pill pill-p">${o.labels}</span></td>
-          <td class="money-green">${formatCurrency(orderTotal(o))}</td>
-                    <td>
+                    <td data-label="Fecha">${formatDate(o.date)}</td>
+                    <td data-label="Nombre del Niño/a"><strong>${o.childName}</strong></td>
+                    <td data-label="Celular">${o.phone}</td>
+                    <td data-label="Carnets"><span class="inline-pill pill-v">${o.carnets}</span></td>
+                    <td data-label="Etiquetas"><span class="inline-pill pill-p">${o.labels}</span></td>
+                    <td data-label="Total" class="money-green">${formatCurrency(orderTotal(o))}</td>
+                    <td data-label="Estado">
                         <select class="status-select" onchange="updateOrderStatus('${o.id}', this.value)">
                             ${statusOptions(o.status)}
                         </select>
                     </td>
-          <td class="td-actions">
+                    <td data-label="Acciones" class="td-actions">
             <button class="icon-btn danger" title="Eliminar" onclick="deleteOrder('${o.id}')"><i class="bi bi-trash"></i></button>
           </td>
         </tr>

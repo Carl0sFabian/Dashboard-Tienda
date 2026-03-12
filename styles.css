@@ -1092,21 +1092,50 @@ textarea.input {
   }
 
   .table tr {
-    border-bottom: 1px solid var(--line);
+    border: 1px solid var(--line-soft);
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: var(--shadow-sm);
     padding: 10px;
+    margin-bottom: 10px;
   }
 
   .table td {
     border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
     text-align: right;
     padding: 8px 10px;
   }
 
   .table td::before {
     content: attr(data-label);
-    float: left;
+    float: none;
     color: #6d7890;
     font-weight: 700;
+    text-align: left;
+    flex: 0 0 44%;
+    max-width: 44%;
+  }
+
+  .table td > * {
+    max-width: 56%;
+  }
+
+  .status-select {
+    width: 100%;
+    max-width: 180px;
+  }
+
+  .td-actions {
+    justify-content: flex-end;
+  }
+
+  .td-actions .icon-btn {
+    width: 34px;
+    height: 34px;
   }
 
   .section-center-title,

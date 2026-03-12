@@ -23,9 +23,17 @@ function formatDate(dateISO) {
 }
 
 function orderTotal(order) {
-    if (Number(order.quantity || 0) > 0 && Number(order.unitPrice || 0) > 0) {
-        return Number(order.quantity) * Number(order.unitPrice);
+    const savedTotal = Number(order.total);
+    if (Number.isFinite(savedTotal) && savedTotal > 0) {
+        return savedTotal;
     }
+
+    const qty = Number(order.quantity || 0) || Number(order.carnets || 0) + Number(order.labels || 0);
+    const customUnitPrice = Number(order.unitPrice);
+    if (qty > 0 && Number.isFinite(customUnitPrice) && customUnitPrice > 0) {
+        return qty * customUnitPrice;
+    }
+
     return Number(order.carnets || 0) * 5000 + Number(order.labels || 0) * 500;
 }
 
@@ -366,6 +374,7 @@ function setupOrderForm() {
         e.preventDefault();
         const qty = Number(document.getElementById("order-quantity").value);
         const unitPrice = Number(unitPriceInput?.value || 0);
+        const total = qty * unitPrice;
         if (qty <= 0) { notify("Ingresa una cantidad mayor a 0"); return; }
         if (unitPrice <= 0) { notify("Ingresa un precio unitario mayor a 0"); return; }
         state.data.orders.push({
@@ -377,6 +386,7 @@ function setupOrderForm() {
             labels: type === "etiquetas" ? qty : 0,
             quantity: qty,
             unitPrice,
+            total,
             productType: type,
             status: "Pendiente",
             clientName: document.getElementById("order-child").value

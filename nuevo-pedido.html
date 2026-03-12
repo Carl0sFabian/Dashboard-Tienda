@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard de Pedidos - Nuevo Pedido</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="nuevo-pedido">
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark"><i class="bi bi-box-seam"></i></div>
+        <div>
+          <p class="brand-title">Dashboard de Pedidos</p>
+          <p class="brand-sub">Gestión de carnets y etiquetas</p>
+        </div>
+      </div>
+    </header>
+
+    <nav class="navbar">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="index.html"><i class="bi bi-house-door nav-icon"></i>Inicio</a></li>
+        <li class="nav-item"><a href="pedidos.html"><i class="bi bi-box-seam nav-icon"></i>Pedidos</a></li>
+        <li class="nav-item"><a href="clientes.html"><i class="bi bi-people nav-icon"></i>Clientes</a></li>
+        <li class="nav-item active"><a href="nuevo-pedido.html"><i class="bi bi-plus-circle nav-icon"></i>Nuevo Pedido</a></li>
+        <li class="nav-item"><a href="nuevo-gasto.html"><i class="bi bi-cash-stack nav-icon"></i>Nuevo Gasto</a></li>
+      </ul>
+    </nav>
+
+    <main class="content centered order-page">
+      <section class="heading-row compact">
+        <div>
+          <h1 class="page-title">Nuevo Pedido</h1>
+          <p class="page-subtitle">Completa la información del pedido</p>
+        </div>
+      </section>
+
+      <section class="card panel-soft order-picker-wrap">
+        <h2 class="section-center-title">¿Qué deseas pedir?</h2>
+        <div class="form-grid picker-grid">
+          <article class="choice-box violet" data-product-type="carnets" aria-label="Seleccionar carnets">
+            <div>
+              <div class="choice-icon violet"><i class="bi bi-person-vcard"></i></div>
+              <h3 class="choice-title violet">Carnets del Colegio</h3>
+              <p class="choice-sub violet">Carnets personalizados para estudiantes</p>
+            </div>
+            <span class="choice-check" aria-hidden="true">✓</span>
+          </article>
+          <article class="choice-box pink" data-product-type="etiquetas" aria-label="Seleccionar etiquetas">
+            <div>
+              <div class="choice-icon pink"><i class="bi bi-tag"></i></div>
+              <h3 class="choice-title pink">Etiquetas Personalizadas</h3>
+              <p class="choice-sub pink">Etiquetas adhesivas con nombre</p>
+            </div>
+            <span class="choice-check" aria-hidden="true">✓</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="card order-card">
+        <h3 class="section-title with-bar">Información del Cliente</h3>
+        <form id="order-form" class="form-grid">
+          <div>
+            <label class="form-label" for="order-child">Nombre del Niño/a *</label>
+            <input class="input" id="order-child" placeholder="Ej: María García" required />
+          </div>
+          <div>
+            <label class="form-label" for="order-phone">Celular *</label>
+            <input class="input" id="order-phone" placeholder="+56 9 1234 5678" required />
+          </div>
+        </form>
+      </section>
+
+      <section class="card order-product-card" id="order-product-card">
+        <h3 class="section-title" id="order-product-title">Carnets del Colegio</h3>
+        <div class="form-grid">
+          <div>
+            <label class="form-label" for="order-quantity">Cantidad *</label>
+            <input class="input" id="order-quantity" type="number" min="0" value="0" required />
+          </div>
+          <div>
+            <label class="form-label" for="order-unit-price">Precio Unitario *</label>
+            <input class="input" id="order-unit-price" type="number" min="0" step="1" value="5000" required />
+          </div>
+          <div>
+            <label class="form-label" for="order-subtotal">Subtotal</label>
+            <input class="input" id="order-subtotal" type="text" value="S/ 0" readonly />
+          </div>
+        </div>
+      </section>
+
+      <section class="card order-card">
+        <h3 class="section-title">Notas Adicionales</h3>
+        <textarea class="input" id="order-notes" placeholder="Detalles especiales del pedido..."></textarea>
+      </section>
+
+      <section class="card order-total-card">
+        <p class="order-total-label">Total del Pedido</p>
+        <p class="order-total-value" id="order-total">S/ 0</p>
+        <div class="actions-row">
+          <button type="submit" form="order-form" class="btn btn-light"><i class="bi bi-floppy"></i> Guardar Pedido</button>
+          <button type="button" class="btn btn-danger" id="order-cancel"><i class="bi bi-x-lg"></i> Cancelar</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

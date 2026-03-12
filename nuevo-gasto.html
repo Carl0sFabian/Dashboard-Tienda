@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard de Pedidos - Nuevo Gasto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="nuevo-gasto">
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark"><i class="bi bi-box-seam"></i></div>
+        <div>
+          <p class="brand-title">Dashboard de Pedidos</p>
+          <p class="brand-sub">Gestión de carnets y etiquetas</p>
+        </div>
+      </div>
+    </header>
+
+    <nav class="navbar">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="index.html"><i class="bi bi-house-door nav-icon"></i>Inicio</a></li>
+        <li class="nav-item"><a href="pedidos.html"><i class="bi bi-box-seam nav-icon"></i>Pedidos</a></li>
+        <li class="nav-item"><a href="clientes.html"><i class="bi bi-people nav-icon"></i>Clientes</a></li>
+        <li class="nav-item"><a href="nuevo-pedido.html"><i class="bi bi-plus-circle nav-icon"></i>Nuevo Pedido</a></li>
+        <li class="nav-item active"><a href="nuevo-gasto.html"><i class="bi bi-cash-stack nav-icon"></i>Nuevo Gasto</a></li>
+      </ul>
+    </nav>
+
+    <main class="content centered expense-page">
+      <section class="heading-row compact">
+        <div>
+          <h1 class="page-title">Registrar Gasto</h1>
+          <p class="page-subtitle">Completa la información del gasto realizado</p>
+        </div>
+      </section>
+
+      <section class="card expense-card">
+        <h2 class="section-title with-bar warm">Información del Gasto</h2>
+        <div class="form-grid form-group">
+          <div>
+            <label class="form-label">Fecha *</label>
+            <input class="input" id="expense-date" type="date" required />
+          </div>
+          <div>
+            <label class="form-label">Categoría *</label>
+            <select class="input" id="expense-category" required>
+              <option>Selecciona categoría</option>
+              <option>Materiales</option>
+              <option>Insumos</option>
+              <option>Transporte</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="card panel-alert expense-card">
+        <h2 class="section-title danger"><i class="bi bi-cash-coin"></i> Detalles</h2>
+        <div class="form-group">
+          <label class="form-label danger">Concepto del Gasto *</label>
+          <input class="input" id="expense-concept" placeholder="Ej: Materiales para carnets" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label danger">Monto *</label>
+          <input class="input" id="expense-amount" type="number" placeholder="0" min="0" required />
+        </div>
+      </section>
+
+      <section class="card expense-card">
+        <h2 class="section-title">Descripción Adicional (Opcional)</h2>
+        <textarea class="input input-area" id="expense-description" placeholder="Detalles adicionales sobre este gasto..."></textarea>
+      </section>
+
+      <section class="card panel-total">
+        <p style="font-size:14px;opacity:0.9;">Total del Gasto</p>
+        <p class="total-big" id="expense-total">S/ 0</p>
+        <div class="actions-row">
+          <button class="btn" id="expense-submit" style="background:#fff;color:#e7000b;"><i class="bi bi-floppy"></i> Registrar Gasto</button>
+          <button class="btn btn-danger" id="expense-cancel"><i class="bi bi-x-lg"></i> Cancelar</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
